@@ -53,6 +53,10 @@ module Example
     # Enable the asset pipeline
     config.assets.enabled = true
 
+    #github suggested config Settings
+    config.assets.compile = false
+    config.public_file_server.enabled = true
+
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end
