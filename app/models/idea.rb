@@ -1,3 +1,4 @@
 class Idea < ActiveRecord::Base
-  attr_accessible :description, :name, :picture
+  # attr_accessor :description, :name, :picture
+  mount_uploader :picture, PictureUploader
 end
