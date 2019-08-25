@@ -40,7 +40,7 @@ class IdeasController < ApplicationController
   # POST /ideas
   # POST /ideas.json
   def create
-    @idea = Idea.new(params[:idea])
+    @idea = Idea.new idea_params
 
     respond_to do |format|
       if @idea.save
@@ -59,7 +59,7 @@ class IdeasController < ApplicationController
     @idea = Idea.find(params[:id])
 
     respond_to do |format|
-      if @idea.update_attributes(params[:idea])
+      if @idea.update_attributes idea_params
         format.html { redirect_to @idea, notice: 'Idea was successfully updated.' }
         format.json { head :no_content }
       else
@@ -79,5 +79,11 @@ class IdeasController < ApplicationController
       format.html { redirect_to ideas_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def idea_params
+    params.require(:idea).permit(:name, :description, :picture)
   end
 end
