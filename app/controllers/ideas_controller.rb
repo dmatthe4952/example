@@ -2,7 +2,7 @@ class IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
   def index
-    @ideas = Idea.all
+    @ideas = current_user.ideas
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,6 +41,7 @@ class IdeasController < ApplicationController
   # POST /ideas.json
   def create
     @idea = Idea.new idea_params
+    @idea.user_id = current_user.id
 
     respond_to do |format|
       if @idea.save
@@ -84,6 +85,6 @@ class IdeasController < ApplicationController
   private
 
   def idea_params
-    params.require(:idea).permit(:name, :description, :picture)
+    params.require(:idea).permit(:name, :description, :picture, :user)
   end
 end

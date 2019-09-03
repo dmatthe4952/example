@@ -1,0 +1,151 @@
+
+Packet Tracer PC Command Line 1.0
+C:\>ipconfig
+
+FastEthernet0 Connection:(default port)
+
+   Link-local IPv6 Address.........: ::
+   IP Address......................: 172.16.0.9
+   Subnet Mask.....................: 255.255.255.0
+   Default Gateway.................: 172.16.0.1
+
+Bluetooth Connection:
+
+   Link-local IPv6 Address.........: ::
+   IP Address......................: 0.0.0.0
+   Subnet Mask.....................: 0.0.0.0
+   Default Gateway.................: 0.0.0.0
+
+C:\>ipconfig >myfile.txt
+Invalid Command.
+
+C:\>ipconfig >> myfile.txt
+Invalid Command.
+
+C:\>nslookup b2server.pt.pka
+
+Server: [172.16.0.3]
+Address:  172.16.0.3
+
+Non-authoritative answer:
+Name:   b2server.pt.pka
+Address:   128.107.64.254
+           
+C:\>tracert b2server.pt.pka
+
+Tracing route to 128.107.64.254 over a maximum of 30 hops: 
+
+  1   1 ms      0 ms      1 ms      172.16.0.1
+  2   0 ms      1 ms      1 ms      64.100.150.2
+  3   1 ms      1 ms      1 ms      64.104.222.2
+  4   1 ms      2 ms      1 ms      64.104.222.6
+  5   *         0 ms      0 ms      128.107.64.254
+
+Trace complete.
+
+C:\>telnet 172.16.0.1
+Trying 172.16.0.1 ...OpenWarning - Unauthorized Access Prohibited
+
+
+User Access Verification
+
+Password: 
+% Password:  timeout expired!
+
+[Connection to 172.16.0.1 closed by foreign host]
+C:\>telnet 172.16.0.1
+Trying 172.16.0.1 ...OpenWarning - Unauthorized Access Prohibited
+
+
+User Access Verification
+
+Password: 
+R4>traceroute b2server.pt.pka
+Translating "b2server.pt.pka"...domain server (255.255.255.255)
+Type escape sequence to abort.
+Tracing the route to 128.107.64.254
+
+  1   64.100.150.2    1 msec    0 msec    1 msec    
+  2   64.104.222.2    2 msec    0 msec    2 msec    
+  3   64.104.222.6    0 msec    0 msec    2 msec    
+  4   128.107.64.254  1 msec    0 msec    1 msec    
+R4>show ip interface brief
+Interface              IP-Address      OK? Method Status                Protocol 
+GigabitEthernet0/0     172.16.0.1      YES manual up                    up 
+GigabitEthernet0/1     unassigned      YES unset  administratively down down 
+Serial0/0/0            64.100.150.1    YES manual up                    up 
+Serial0/0/1            unassigned      YES unset  up                    up 
+Serial0/0/1.1          64.100.200.1    YES manual up                    up 
+Vlan1                  unassigned      YES unset  administratively down down
+R4>telnet 64.104.222.2
+Trying 64.104.222.2 ...OpenWarning - Unauthorized Access Prohibited
+
+
+User Access Verification
+
+Password: 
+ISP-Tier3b>show ip route
+Codes: C - connected, S - static, I - IGRP, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is 64.104.222.1 to network 0.0.0.0
+
+     64.0.0.0/8 is variably subnetted, 8 subnets, 3 masks
+D       64.0.0.0/8 is a summary, 00:13:11, Null0
+C       64.100.8.0/24 is directly connected, GigabitEthernet0/2
+D       64.100.100.0/30 [90/2170112] via 64.104.222.1, 00:13:10, GigabitEthernet0/1
+D       64.100.150.0/30 [90/2170112] via 64.104.222.1, 00:13:10, GigabitEthernet0/1
+D EX    64.100.200.0/30 [170/6778112] via 64.104.222.1, 00:13:10, GigabitEthernet0/1
+C       64.104.222.0/30 is directly connected, GigabitEthernet0/1
+C       64.104.222.4/30 is directly connected, FastEthernet0/2
+D       64.104.223.0/30 [90/3072] via 64.104.222.1, 00:13:10, GigabitEthernet0/1
+     128.107.0.0/16 is variably subnetted, 3 subnets, 2 masks
+D       128.107.0.0/16 is a summary, 00:13:11, Null0
+C       128.107.46.0/24 is directly connected, FastEthernet0/1
+D       128.107.64.0/24 [90/28416] via 64.104.222.6, 00:13:10, FastEthernet0/2
+D*EX 0.0.0.0/0 [170/6778112] via 64.104.222.1, 00:13:10, GigabitEthernet0/1
+
+ISP-Tier3b>telnet 64.104.222.6
+Trying 64.104.222.6 ...OpenWarning - Unauthorized Access Prohibited
+
+
+User Access Verification
+
+Password: 
+B2-R1>show ip route
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is 64.104.222.5 to network 0.0.0.0
+
+     64.0.0.0/8 is variably subnetted, 8 subnets, 3 masks
+D       64.100.8.0/24 [90/7680] via 64.104.222.5, 00:18:28, GigabitEthernet0/0
+D       64.100.100.0/30 [90/2172672] via 64.104.222.5, 00:18:28, GigabitEthernet0/0
+D       64.100.150.0/30 [90/2172672] via 64.104.222.5, 00:18:28, GigabitEthernet0/0
+D EX    64.100.200.0/30 [170/6780672] via 64.104.222.5, 00:18:28, GigabitEthernet0/0
+D       64.104.222.0/30 [90/5376] via 64.104.222.5, 00:18:28, GigabitEthernet0/0
+C       64.104.222.4/30 is directly connected, GigabitEthernet0/0
+L       64.104.222.6/32 is directly connected, GigabitEthernet0/0
+D       64.104.223.0/30 [90/5632] via 64.104.222.5, 00:18:28, GigabitEthernet0/0
+     128.107.0.0/16 is variably subnetted, 3 subnets, 3 masks
+D       128.107.0.0/16 [90/30720] via 64.104.222.5, 00:18:28, GigabitEthernet0/0
+C       128.107.64.0/24 is directly connected, GigabitEthernet0/1
+L       128.107.64.1/32 is directly connected, GigabitEthernet0/1
+D*EX 0.0.0.0/0 [170/6780672] via 64.104.222.5, 00:18:28, GigabitEthernet0/0
+
+B2-R1>show ip interface brief
+Interface              IP-Address      OK? Method Status                Protocol 
+GigabitEthernet0/0     64.104.222.6    YES manual up                    up 
+GigabitEthernet0/1     128.107.64.1    YES manual up                    up 
+Vlan1                  unassigned      YES unset  administratively down down
+B2-R1>

@@ -1,19 +1,27 @@
-body {
-  background-color: #fff;
+/* body {
+  /* background-color: #fff;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+}*/
+
+nav {
+  background-color: #EEE;
+}
+
+.navbar url.navbar-nav{
+  text-decoration: none;
 }
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 11px;
+  line-height: 13px;
 }
 
 pre {
-  background-color: #eee;
+  /* background-color: #eee; */
   padding: 10px;
   font-size: 11px;
 }
@@ -30,7 +38,7 @@ a {
     background-color: #000;
   }
 }
-
+/*  */
 div {
   &.field, &.actions {
     margin-bottom: 10px;
@@ -67,7 +75,25 @@ div {
   }
 
   ul li {
-    font-size: 12px;
+    font-size: 18px;
     list-style: square;
+    text-decoration: none;
   }
+}
+.navbar-header {
+  height: 100px;
+}
+.navbar-inverse .navbar-nav > li > a {
+	color: #ffffff;
+	font-family: Lato;
+	font-size: 1.7em;
+	font-weight: 300;
+	padding: 30px 25px 33px 25px;
+}
+.navbar-inverse .navbar-nav > li >span > a {
+	color: #ffffff;
+	font-family: Lato;
+	font-size: 1.7em;
+	font-weight: 300;
+	padding: 30px 25px 33px 25px;
 }
