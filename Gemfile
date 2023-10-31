@@ -7,7 +7,7 @@ gem 'rails', '4.2.8'
 
 gem 'sqlite3', '~> 1.3.6'
 gem 'carrierwave'
-gem 'rmagick', '~>2.16.0'
+gem 'rmagick', '~>5.3.0'
 gem 'devise'
 
 
